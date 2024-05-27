@@ -1,0 +1,46 @@
+{
+    "name": "quien/wp-sample-site",
+    "description": "My WordPress Sample Site",
+    "type": "project",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Quien",
+            "email": "quien697@gmail.com"
+        }
+    ],
+    "config": {
+        "vendor-dir": "vendor",
+        "allow-plugins": {
+            "composer/installers": true,
+            "johnpbloch/wordpress-core-installer": true
+        }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://wpackagist.org"
+        }
+    ],
+    "require": {
+        "php": ">=8.0",
+        "johnpbloch/wordpress-core-installer": "^2.0",
+        "johnpbloch/wordpress": "^6.5.3",
+        "wpackagist-theme/astra": "^4.6",
+        "wpackagist-plugin/wordpress-seo": "^22.7"
+    },
+    "extra": {
+        "wordpress-install-dir": "wp",
+        "installer-paths": {
+            "wp/wp-content/mu-plugins/{$name}/": [
+                "type:wordpress-muplugin"
+            ],
+            "wp/wp-content/plugins/{$name}/": [
+                "type:wordpress-plugin"
+            ],
+            "wp/wp-content/themes/{$name}/": [
+                "type:wordpress-theme"
+            ]
+        }
+    }
+}

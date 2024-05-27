@@ -1,0 +1,52 @@
+# Wordpress - ignore core, configuration, plugins, themes, uploads and logs.
+# https://github.com/github/gitignore/blob/main/WordPress.gitignore
+
+# Core
+
+/vendor
+/wp/wp-admin/
+/wp/wp-content/index.php
+/wp/wp-content/languages
+/wp/wp-content/plugins/index.php
+/wp/wp-content/themes/index.php
+/wp/wp-includes/
+/wp/index.php
+/wp/license.txt
+/wp/readme.html
+/wp/wp-*.php
+/wp/xmlrpc.php
+/wp/composer.json
+
+# Configuration
+/wp/wp-config.php
+
+# Plugin
+/wp/wp-content/plugins/*
+
+# Custom Plugin
+
+# Note: If you wish to whitelist plugins,
+# uncomment the next line
+# !/wp/wp-content/plugins/your custom plugin
+
+# Themes
+/wp/wp-content/themes/*
+
+# Custom Themes
+#
+# Note: If you wish to whitelist themes,
+# uncomment the next line
+# /wp/wp-content/themes/your custom themes
+
+# Uploads
+/wp/wp-content/uploads/
+
+# Log files
+/wp/*.log
+
+# htaccess
+/.htaccess
+
+# Other
+/.idea
+/.vscode
