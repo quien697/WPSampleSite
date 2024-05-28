@@ -2,7 +2,6 @@
 # https://github.com/github/gitignore/blob/main/WordPress.gitignore
 
 # Core
-
 /vendor
 /wp/wp-admin/
 /wp/wp-content/index.php
@@ -36,7 +35,7 @@
 #
 # Note: If you wish to whitelist themes,
 # uncomment the next line
-# /wp/wp-content/themes/your custom themes
+!/wp/wp-content/themes/wpsamplesite
 
 # Uploads
 /wp/wp-content/uploads/
@@ -45,8 +44,8 @@
 /wp/*.log
 
 # htaccess
-/.htaccess
+/wp/.htaccess
 
-# Other
+# IDEs
 /.idea
 /.vscode
