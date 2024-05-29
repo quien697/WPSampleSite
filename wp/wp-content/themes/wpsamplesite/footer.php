@@ -1,3 +1,12 @@
+<?php
+/**
+ * The template for displaying the footer.
+ *
+ * Contains the closing of the #content div and all content after.
+ *
+ */
+?>
+
         <footer class="site-footer">
             <div class="site-footer__inner container container--narrow">
                 <div class="group">

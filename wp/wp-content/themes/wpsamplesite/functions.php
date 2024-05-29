@@ -1,4 +1,8 @@
 <?php
+/**
+ * The file to create functions and definitions.
+ *
+ */
 
 function wp_sample_site_files(): void {
 	wp_enqueue_script('main-university-js', get_theme_file_uri('/build/index.js'), array('jquery'), '1.0', true);

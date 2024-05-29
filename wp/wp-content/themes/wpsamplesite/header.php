@@ -1,3 +1,12 @@
+<?php
+/**
+ * The template for displaying the footer.
+ *
+ * This is the template that displays all the <head> section and everything up until <div id="content">
+ *
+ */
+?>
+
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
     <head>
@@ -18,13 +27,15 @@
                 <div class="site-header__menu group">
                     <nav class="main-navigation">
                         <ul>
-                            <li <?php if (is_page('about-us') or wp_get_post_parent_id(0) == 8) echo 'class="current-menu-item"' ?>>
+                            <li <?php if (is_page('about-us')) echo 'class="current-menu-item"' ?>>
                                 <a href="<?php echo site_url('/about-us') ?>">About Us</a>
                             </li>
                             <li><a href="#">Programs</a></li>
                             <li><a href="#">Events</a></li>
                             <li><a href="#">Campuses</a></li>
-                            <li><a href="#">Blog</a></li>
+                            <li <?php if (get_post_type() == 'post') echo 'class="current-menu-item"' ?>>
+                                <a href="<?php echo site_url('/blog') ?>">Blog</a>
+                            </li>
                         </ul>
                     </nav>
                     <div class="site-header__util">
