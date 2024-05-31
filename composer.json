@@ -27,7 +27,8 @@
         "johnpbloch/wordpress-core-installer": "^2.0",
         "johnpbloch/wordpress": "^6.5.3",
         "wpackagist-theme/astra": "^4.6",
-        "wpackagist-plugin/wordpress-seo": "^22.7"
+        "wpackagist-plugin/wordpress-seo": "^22.7",
+        "wpackagist-plugin/advanced-custom-fields": "^6.3"
     },
     "extra": {
         "wordpress-install-dir": "wp",
