@@ -4,20 +4,13 @@
  *
  */
 ?>
-<?php get_header(); ?>
+<?php
+get_header();
 
-<?php while ( have_posts() ) {
+while ( have_posts() ) {
 	the_post();
-	?>
-	<div class="page-banner">
-		<div class="page-banner__bg-image" style="background-image: url(<?php echo get_theme_file_uri('/images/ocean.jpg') ?>);"></div>
-		<div class="page-banner__content container container--narrow">
-			<h1 class="page-banner__title"><?php the_title(); ?></h1>
-			<div class="page-banner__intro">
-				<p>DON'T FORGET TO REPLACE ME LATER</p>
-			</div>
-		</div>
-	</div>
+    pageBanner();
+?>
 	<div class="container container--narrow page-section">
 		<div class="metabox metabox--position-up metabox--with-home-link">
 			<p>
@@ -28,7 +21,6 @@
 			</p>
 		</div>
 		<div class="generic-content"><?php the_content(); ?></div>
-
         <?php
         $relatedProfessors = new WP_Query(array(
 	        'posts_per_page' => -1,
@@ -50,21 +42,19 @@
 	        echo '<h2 class="headline headline--medium">' . get_the_title() . ' Professors</h2>';
 
 	        echo '<ul class="professor-cards">';
-	        while($relatedProfessors->have_posts()) {
-		        $relatedProfessors->the_post();
+                while($relatedProfessors->have_posts()) {
+                    $relatedProfessors->the_post();
         ?>
-                <li class="professor-card__list-item">
-                    <a class="professor-card" href="<?php the_permalink(); ?>">
-                        <img class="professor-card__image" src="<?php the_post_thumbnail_url('professorLandscape') ?>">
-                        <span class="professor-card__name"><?php the_title(); ?></span>
-                    </a>
-                </li>
-	         <?php } ?>
+                    <li class="professor-card__list-item">
+                        <a class="professor-card" href="<?php the_permalink(); ?>">
+                            <img class="professor-card__image" src="<?php the_post_thumbnail_url('professorLandscape') ?>">
+                            <span class="professor-card__name"><?php the_title(); ?></span>
+                        </a>
+                    </li>
+                 <?php } ?>
             </ul>
 		<?php } ?>
-
         <?php wp_reset_postdata(); ?>
-
         <?php
         $today = date('Ymd');
         $events = new WP_Query( array(
@@ -87,38 +77,15 @@
 	            )
             )
         ));
-        ?>
-		<?php
         if ( $events->have_posts() ) {
 	        echo '<hr class="section-break">';
 	        echo '<h2 class="headline headline--medium">Upcoming ' . get_the_title() . ' Events</h2>';
 	        while ($events->have_posts()) {
 		        $events->the_post();
-		        ?>
-                <div class="event-summary">
-                    <a class="event-summary__date t-center" href="#">
-                            <span class="event-summary__month">
-                                <?php
-                                $eventDate = new DateTime( get_field( 'event_date' ) );
-                                echo $eventDate->format('M');
-                                ?>
-                            </span>
-                        <span class="event-summary__day">
-                                <?php echo $eventDate->format('d') ?>
-                            </span>
-                    </a>
-                    <div class="event-summary__content">
-                        <h5 class="event-summary__title headline headline--tiny">
-                            <a href="<?php the_permalink(); ?>"><?php the_title() ?></a>
-                        </h5>
-                        <p><?php echo (has_excerpt()) ? get_the_excerpt() : wp_trim_words(get_the_content(), 18); ?>
-                            <a href="<?php the_permalink(); ?>" class="nu gray">Learn more</a>
-                        </p>
-                    </div>
-                </div>
-            <?php } ?>
-		<?php } ?>
-
+                get_template_part('template-parts/content', 'event');
+            }
+        }
+        ?>
 	</div>
 	<hr>
 <?php } ?>
