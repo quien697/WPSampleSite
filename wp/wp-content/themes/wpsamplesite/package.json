@@ -1,0 +1,27 @@
+{
+  "name": "wp-sample-site",
+  "version": "1.0.0",
+  "description": "WP Sample Site Theme",
+  "main": "index.js",
+  "scripts": {
+    "build": "wp-scripts build",
+    "start": "wp-scripts start",
+    "dev": "wp-scripts start",
+    "devFast": "wp-scripts start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Quien",
+    "email": "quien697@gmail.com",
+    "url": "https://www.tsunghsun.me/",
+    "role": "developer"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@glidejs/glide": "^3.4.1",
+    "@wordpress/scripts": "*",
+    "axios": "^0.21.1",
+    "normalize.css": "^8.0.1"
+  }
+}
