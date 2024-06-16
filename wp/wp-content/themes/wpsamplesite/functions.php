@@ -33,11 +33,15 @@ function pageBanner($args = null): void {
 
 
 function wp_sample_site_files(): void {
-	wp_enqueue_script('main-university-js', get_theme_file_uri('/build/index.js'), array('jquery'), '1.0', true);
+    // Style
+	wp_enqueue_style('wp-sample-site_main_styles', get_theme_file_uri('/build/style-index.css'));
+	wp_enqueue_style('wp-sample-site_extra_styles', get_theme_file_uri('/build/index.css'));
 	wp_enqueue_style('custom-google-fonts', '//fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i|Roboto:100,300,400,400i,700,700i');
 	wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
-	wp_enqueue_style('university_main_styles', get_theme_file_uri('/build/style-index.css'));
-	wp_enqueue_style('university_extra_styles', get_theme_file_uri('/build/index.css'));
+
+	// Script
+	wp_enqueue_script('googleMap', '//maps.googleapis.com/maps/api/js?key=AIzaSyCL_41L1zpFvKzAfURjUCykDm5bNiLpoXk', NULL, '1.0', true);
+	wp_enqueue_script('wp-sample-site-main-js', get_theme_file_uri('/build/index.js'), array('jquery'), '1.0', true);
 }
 
 add_action('wp_enqueue_scripts', 'wp_sample_site_files');
@@ -53,6 +57,7 @@ function wp_sample_site_features(): void {
 add_action('after_setup_theme', 'wp_sample_site_features');
 
 function event_adjust_query($query): void {
+    // Program
 	if(
 		!is_admin() &&
 		is_post_type_archive('program') &&
@@ -63,6 +68,7 @@ function event_adjust_query($query): void {
 		$query->set('posts_per_page', -1);
 	}
 
+    // Event
 	if (
 		!is_admin() &&
 		is_post_type_archive('event') &&
@@ -81,6 +87,23 @@ function event_adjust_query($query): void {
 			)
 		));
 	}
+
+    // Campus
+	if (
+            !is_admin() &&
+            is_post_type_archive('campus') &&
+            $query->is_main_query()
+    ) {
+		$query->set('posts_per_page', -1);
+	}
+
 }
 
 add_action('pre_get_posts', 'event_adjust_query');
+
+function wp_sample_site_map_key($api) {
+    $api['key'] = 'AIzaSyCL_41L1zpFvKzAfURjUCykDm5bNiLpoXk';
+	return $api;
+}
+
+add_filter('acf/fields/google_map/api', 'wp_sample_site_map_key');
