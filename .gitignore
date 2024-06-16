@@ -53,3 +53,6 @@
 # Dependency directories
 node_modules
 build
+
+# Dotenv environment variable files
+.env
